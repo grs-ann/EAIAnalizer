@@ -15,8 +15,4 @@
     <ProjectReference Include="..\EAIAnalizer.Domain\EAIAnalizer.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Incoming\" />
-  </ItemGroup>
-
 </Project>

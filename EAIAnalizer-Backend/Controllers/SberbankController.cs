@@ -1,4 +1,4 @@
-﻿using EAIAnalizer.BLL.Services.Sberbank;
+﻿using EAIAnalizer.BLL.Services;
 using EAIAnalizer.Domain.Dto;
 using Microsoft.AspNetCore.Mvc;
 using MimeMapping;

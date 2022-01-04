@@ -1,5 +1,5 @@
-using EAIAnalizer.BLL.Services.Sberbank;
 using EAIAnalizer_Backend.DB;
+using EAIAnalizer_Backend.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +8,8 @@ string connection = builder.Configuration.GetConnectionString("DefaultConnection
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
-builder.Services.AddTransient<ISberbankService, SberbankService>();
+
+builder = DependencyInjector.ResolveDependencies(builder);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

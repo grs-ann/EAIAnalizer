@@ -1,19 +1,20 @@
-﻿using EAIAnalizer.Domain.Entities;
+﻿using EAIAnalizer.Domain.BaseEntities;
+using EAIAnalizer.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAIAnalizer.Domain.BaseEntities
+namespace EAIAnalizer.Domain.Entities
 {
-    public class BaseOperation : BaseEntity
+    public class Operation : BaseEntity
     {
         /// <summary>
         /// Operation datetime.
         /// </summary>
-        [Required]
         public DateTime Date { get; set; }
         /// <summary>
         /// Type of operation(incoming/outcoming, etc.)
@@ -28,6 +29,7 @@ namespace EAIAnalizer.Domain.BaseEntities
         /// Sum of operation. 
         /// </summary>
         [Required]
+        [Column(TypeName="money")]
         public decimal Sum { get; set; }
         /// <summary>
         /// Currency(RUB, RUR, USD, for example).
@@ -38,9 +40,5 @@ namespace EAIAnalizer.Domain.BaseEntities
         /// Description of operation.
         /// </summary>
         public string? Description { get; set; }
-        /// <summary>
-        /// Card number 
-        /// </summary>
-        public BankCard? BankCard { get; set; }
     }
 }

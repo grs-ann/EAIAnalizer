@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAIAnalizer.DAL.Repositories
+namespace EAIAnalizer.BLL.Services
 {
-    public interface IOperationRepository
+    public interface IOperationService
     {
-
     }
 }
