@@ -1,4 +1,6 @@
 ﻿using EAIAnalizer.Domain.Dto;
+using EAIAnalizer_Backend.DB;
+using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,11 @@ namespace EAIAnalizer.BLL.Services.Sberbank
 {
     public class SberbankService : ISberbankService
     {
+        private readonly ApplicationDbContext _dbContext;
+        public SberbankService(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         /// <summary>
         /// Uploads data from 'excel' document to database.
         /// </summary>
@@ -17,16 +24,20 @@ namespace EAIAnalizer.BLL.Services.Sberbank
         /// <returns>Task object.</returns>
         public async Task UploadDataFromExcel(FileInputDto fileInput)
         {
-            using (var memoryStream = new MemoryStream())
+            if (fileInput != null && fileInput.File != null)
             {
-                await fileInput.File.CopyToAsync(memoryStream);
-                using (var package = new ExcelPackage(memoryStream))
+                using (var memoryStream = new MemoryStream())
                 {
-                    var worksheet = package?.Workbook?.Worksheets?.FirstOrDefault();
-                    if (worksheet != null)
+                    await fileInput.File.CopyToAsync(memoryStream);
+                    using (var package = new ExcelPackage(memoryStream))
                     {
-                        var rowCount = worksheet.Dimension.Rows;
-                        var columnsCount = worksheet.Dimension.Columns;
+                        var worksheet = package?.Workbook?.Worksheets?.FirstOrDefault();
+                        if (worksheet != null)
+                        {
+                            var rowCount = worksheet.Dimension.Rows;
+                            var columnsCount = worksheet.Dimension.Columns;
+                            // todo ! realize the logic, which can transfer(map) sberbank excel table into our db.
+                        }
                     }
                 }
             }
