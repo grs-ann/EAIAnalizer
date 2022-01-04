@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAIAnalizer.BLL.Services.Sberbank
+namespace EAIAnalizer.BLL.Services
 {
     public class SberbankService : ISberbankService
     {

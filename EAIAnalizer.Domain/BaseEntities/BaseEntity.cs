@@ -16,7 +16,6 @@ namespace EAIAnalizer.Domain.BaseEntities
         /// <summary>
         /// Primary key.
         /// </summary>
-        [Required]
         public Guid Id { get; set; }
     }
 }
